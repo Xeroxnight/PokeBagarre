@@ -27,6 +27,6 @@ public class Pokemon {
     var statsPremier = getStats();
     var statsSecond = autrePokemon.getStats();
     return statsPremier.getAttaque() > statsSecond.getAttaque()
-      || statsPremier.getAttaque() == statsSecond.getAttaque() && statsPremier.getDefense() >= statsSecond.getDefense();
+      || statsPremier.getAttaque() == statsSecond.getAttaque() && statsPremier.getDefense()  >= statsSecond.getDefense();
   }
 }

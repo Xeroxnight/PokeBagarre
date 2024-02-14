@@ -26,6 +26,7 @@ public class PokeBuildApi {
     this.urlBaseApi = urlBaseApi;
   }
 
+  //vérifie si le poke existe
   public CompletableFuture<Pokemon> recupererParNom(String nom) throws ErreurBagarre {
     return HttpClient.newHttpClient().sendAsync(HttpRequest.newBuilder()
         .uri(getWebApiUri(nom.trim()))
