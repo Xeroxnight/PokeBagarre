@@ -1,27 +1,60 @@
 package com.montaury.pokebagarre.metier;
 
 import com.montaury.pokebagarre.fixtures.ConstructeurDePokemon;
+import com.montaury.pokebagarre.webapi.PokeBuildApi;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PokemonTest {
-    public static void main(String[] args){
-        Stats stat1 = new Stats(60,60);
-        Stats stat2 = new Stats(50,60);
-        Stats stat3 = new Stats(60,50);
+/*
+    teste :
+    si le pokemon ayant la plus grande attaque gagne
+    si les 2 pokemon ayant la meme attaque c bien celui avec le ++ de def qui win
+    si les 2 poke on att et def == alors le premier gagne
+     */
+class PokemonTest
 
+{
 
-        Pokemon poke1 = new Pokemon("Poke1", "img1", stat1);
-        Pokemon poke2 = new Pokemon("Poke2", "img2", stat2);
-        Pokemon poke3 = new Pokemon("Poke3", "img3", stat3);
-        Pokemon poke4 = new Pokemon("Poke4", "img4", stat1);
-
-        boolean result1 = poke1.estVainqueurContre(poke2);
-        boolean result2 = poke1.estVainqueurContre(poke3);
-        boolean result3 = poke1.estVainqueurContre(poke4);
-        System.out.println(result1?"gagne avec attaque" : "erreur");
-        System.out.println(result2?"gagne avec defense" : "erreur");
-        System.out.println(result3?"gagne avec prio (égalité)" : "erreur");
-
+    @Test
+    void devrai_afficher_true_si_att_pok1_mieu_que_pok2()
+    {
+        Pokemon poke1 = ConstructeurDePokemon.unPokemon().avecAttaque(50).avecDefense(30).construire();
+        Pokemon poke2 = ConstructeurDePokemon.unPokemon().avecAttaque(50).avecDefense(30).construire();
+        boolean resultat =  poke1.estVainqueurContre(poke2);
+        assert resultat == true;
+        //System.out.println(resultat?"1er teste passer":"1er teste pas passer");
     }
+
+    @Test
+    void devrai_afficher_true_si_deff_pok1_mieu_que_pok2()
+    {
+        Pokemon poke1 = ConstructeurDePokemon.unPokemon().avecAttaque(50).avecDefense(30).construire();
+        Pokemon poke2 = ConstructeurDePokemon.unPokemon().avecAttaque(50).avecDefense(10).construire();
+        boolean resultat =  poke1.estVainqueurContre(poke2);
+        //System.out.println(resultat?"2em teste passer":"2em teste pas passer");
+        assert resultat == true;
+    }
+
+    @Test
+    void devrait_afficher_true_()
+    {
+        Pokemon poke1 = ConstructeurDePokemon.unPokemon().avecAttaque(50).avecDefense(30).construire();
+        Pokemon poke2 = ConstructeurDePokemon.unPokemon().avecAttaque(50).avecDefense(30).construire();
+        boolean resultat =  poke1.estVainqueurContre(poke2);
+        //System.out.println(resultat?"3em teste passer":"3em teste pas passer");
+        assert resultat == true;
+    }
+
+    /*public static void main(String[] args)
+    {
+
+        devrai_afficher_true_si_att_pok1_mieu_que_pok2();
+        devrai_afficher_true_si_deff_pok1_mieu_que_pok2();
+        devrai_afficher_true_();
+
+    }*/
+
+
+
 }
